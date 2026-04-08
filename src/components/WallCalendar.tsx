@@ -38,26 +38,32 @@ export const WallCalendar: React.FC = () => {
             className="hero-image"
           />
           <div className="hero-overlay">
-            <select 
-              className="hero-year" 
-              value={currentDate.getFullYear()}
-              onChange={(e) => handleYearChange(parseInt(e.target.value))}
-            >
-              {Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - 50 + i).map(year => (
-                <option key={year} value={year}>{year}</option>
-              ))}
-            </select>
-            <select 
-              className="hero-month"
-              value={currentDate.getMonth()}
-              onChange={(e) => handleMonthChange(parseInt(e.target.value))}
-            >
-              {Array.from({ length: 12 }, (_, i) => i).map(month => (
-                <option key={month} value={month}>
-                  {format(new Date(2000, month, 1), 'MMMM')}
-                </option>
-              ))}
-            </select>
+            <div className="hero-nav-controls">
+              <button className="hero-nav-btn" onClick={handlePrevMonth} aria-label="Previous Month"><ChevronLeft size={28}/></button>
+              <div className="hero-text-content">
+                <select 
+                  className="hero-year" 
+                  value={currentDate.getFullYear()}
+                  onChange={(e) => handleYearChange(parseInt(e.target.value))}
+                >
+                  {Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - 50 + i).map(year => (
+                    <option key={year} value={year}>{year}</option>
+                  ))}
+                </select>
+                <select 
+                  className="hero-month"
+                  value={currentDate.getMonth()}
+                  onChange={(e) => handleMonthChange(parseInt(e.target.value))}
+                >
+                  {Array.from({ length: 12 }, (_, i) => i).map(month => (
+                    <option key={month} value={month}>
+                      {format(new Date(2000, month, 1), 'MMMM')}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button className="hero-nav-btn" onClick={handleNextMonth} aria-label="Next Month"><ChevronRight size={28}/></button>
+            </div>
           </div>
         </div>
 
@@ -74,10 +80,6 @@ export const WallCalendar: React.FC = () => {
           </div>
 
           <div className="calendar-grid-container">
-            <div className="calendar-navigation">
-              <button className="nav-btn" onClick={handlePrevMonth} aria-label="Previous Month"><ChevronLeft size={16}/></button>
-              <button className="nav-btn" onClick={handleNextMonth} aria-label="Next Month"><ChevronRight size={16}/></button>
-            </div>
 
             <div className="calendar-grid" key={format(currentDate, 'yyyy-MM')} style={{ animation: 'gridFadeIn 0.4s ease-out' }}>
               {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map((day) => (
