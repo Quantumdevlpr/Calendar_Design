@@ -119,81 +119,87 @@
   animation-delay: 0.2s;
 }
 
-.hero-nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.hero-text-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.hero-nav-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.7);
-  transition: transform 0.2s ease, color 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-nav-btn:hover { 
-  color: white; 
-  transform: scale(1.2);
-}
-.hero-nav-btn:active {
-  transform: scale(0.9);
-}
 
 @keyframes fadeInScale {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
 
-.hero-year {
+.hero-display-text {
+  margin-bottom: 15px;
+}
+
+.hero-year-text {
   font-size: 1.5rem;
   font-weight: 400;
   display: block;
   line-height: 1;
-  appearance: none;
-  background: transparent;
-  border: none;
-  color: white;
-  text-align-last: right;
-  direction: rtl;
-  cursor: pointer;
-  outline: none;
-  font-family: inherit;
-}
-.hero-year option {
-  color: #333;
-  direction: ltr;
 }
 
-.hero-month {
+.hero-month-text {
   font-size: 2.2rem;
   font-weight: 700;
   text-transform: uppercase;
   display: block;
   line-height: 1.2;
+}
+
+.hero-nav-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.hero-small-dropdowns {
+  display: flex;
+  gap: 5px;
+}
+
+.small-select {
   appearance: none;
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  text-align-last: right;
-  direction: rtl;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
   outline: none;
-  font-family: inherit;
+  transition: all 0.2s ease;
 }
-.hero-month option {
+
+.small-select:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.small-select option {
   color: #333;
-  direction: ltr;
-  text-transform: none;
+}
+
+.hero-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+.hero-nav-btn:hover { 
+  opacity: 1; 
+  transform: scale(1.15);
+}
+.hero-nav-btn:active {
+  transform: scale(0.9);
 }
 
 .calendar-body {
