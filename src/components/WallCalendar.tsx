@@ -14,7 +14,9 @@ export const WallCalendar: React.FC = () => {
     setNotes,
     handleNextMonth,
     handlePrevMonth,
-    handleDateClick
+    handleDateClick,
+    handleMonthChange,
+    handleYearChange
   } = useCalendar();
 
   const days = getDaysInMonth(currentDate);
@@ -36,8 +38,26 @@ export const WallCalendar: React.FC = () => {
             className="hero-image"
           />
           <div className="hero-overlay">
-            <span className="hero-year">{format(currentDate, 'yyyy')}</span>
-            <span className="hero-month">{format(currentDate, 'MMMM')}</span>
+            <select 
+              className="hero-year" 
+              value={currentDate.getFullYear()}
+              onChange={(e) => handleYearChange(parseInt(e.target.value))}
+            >
+              {Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - 50 + i).map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+            <select 
+              className="hero-month"
+              value={currentDate.getMonth()}
+              onChange={(e) => handleMonthChange(parseInt(e.target.value))}
+            >
+              {Array.from({ length: 12 }, (_, i) => i).map(month => (
+                <option key={month} value={month}>
+                  {format(new Date(2000, month, 1), 'MMMM')}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 

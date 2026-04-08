@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { addMonths, subMonths, isBefore } from 'date-fns';
+import { addMonths, subMonths, isBefore, setMonth, setYear } from 'date-fns';
 
 export interface Note {
   id: string;
@@ -38,6 +38,9 @@ export function useCalendar() {
     }
   };
 
+  const handleMonthChange = (month: number) => setCurrentDate(setMonth(currentDate, month));
+  const handleYearChange = (year: number) => setCurrentDate(setYear(currentDate, year));
+
   return {
     currentDate,
     startDate,
@@ -47,5 +50,7 @@ export function useCalendar() {
     handleNextMonth,
     handlePrevMonth,
     handleDateClick,
+    handleMonthChange,
+    handleYearChange,
   };
 }

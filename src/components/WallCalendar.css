@@ -102,6 +102,19 @@
   font-weight: 400;
   display: block;
   line-height: 1;
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align-last: right;
+  direction: rtl;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+}
+.hero-year option {
+  color: #333;
+  direction: ltr;
 }
 
 .hero-month {
@@ -110,6 +123,20 @@
   text-transform: uppercase;
   display: block;
   line-height: 1.2;
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align-last: right;
+  direction: rtl;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+}
+.hero-month option {
+  color: #333;
+  direction: ltr;
+  text-transform: none;
 }
 
 .calendar-body {
