@@ -19,19 +19,16 @@ export const WallCalendar: React.FC = () => {
 
   const days = getDaysInMonth(currentDate);
 
-  // Generate 25 binder rings for the physical look
   const binderRings = Array.from({ length: 25 }, (_, i) => i);
 
   return (
     <div className="calendar-wrapper">
       <div className="calendar-container">
         
-        {/* Physical Binder Effect */}
         <div className="calendar-binder">
           {binderRings.map(ring => <div key={ring} className="binder-ring" />)}
         </div>
 
-        {/* Visual Anchor / Hero Image */}
         <div className="calendar-hero">
           <img 
             src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop" 
@@ -44,10 +41,8 @@ export const WallCalendar: React.FC = () => {
           </div>
         </div>
 
-        {/* Main Content Area */}
         <div className="calendar-body">
           
-          {/* Notes Section - Mimicking a physical notes area */}
           <div className="calendar-notes">
             <div className="notes-header">Notes</div>
             <textarea
@@ -58,7 +53,6 @@ export const WallCalendar: React.FC = () => {
             />
           </div>
 
-          {/* Calendar Grid Area */}
           <div className="calendar-grid-container">
             <div className="calendar-navigation">
               <button className="nav-btn" onClick={handlePrevMonth} aria-label="Previous Month"><ChevronLeft size={16}/></button>
@@ -66,14 +60,12 @@ export const WallCalendar: React.FC = () => {
             </div>
 
             <div className="calendar-grid">
-              {/* Weekday Headers */}
               {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map((day) => (
                 <div key={day} className="weekday-header">
                   {day}
                 </div>
               ))}
 
-              {/* Days Grid */}
               {days.map((day) => {
                 const isCurrentMonth = isSameMonth(day, currentDate);
                 const isSelected = isDateSelected(day, startDate, endDate);

@@ -4,7 +4,7 @@ import { addMonths, subMonths, isBefore } from 'date-fns';
 export interface Note {
   id: string;
   text: string;
-  dateStr?: string; // Optional: could be associated with a specific date in YYYY-MM-DD
+  dateStr?: string;
 }
 
 export function useCalendar() {
@@ -12,7 +12,6 @@ export function useCalendar() {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   
-  // App-wide notes
   const [notes, setNotes] = useState<string>(() => {
     const saved = localStorage.getItem('wall_calendar_notes');
     return saved || '';
@@ -26,12 +25,10 @@ export function useCalendar() {
   const handlePrevMonth = () => setCurrentDate(subMonths(currentDate, 1));
 
   const handleDateClick = (date: Date) => {
-    // If no start date, or both start and end date exist, reset and set new start date
     if (!startDate || (startDate && endDate)) {
       setStartDate(date);
       setEndDate(null);
     } else {
-      // If start date exists, check if clicked date is before start date
       if (isBefore(date, startDate)) {
         setEndDate(startDate);
         setStartDate(date);
