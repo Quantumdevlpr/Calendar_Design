@@ -1,0 +1,231 @@
+/* WallCalendar.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary-blue: #1ea3dd;
+  --primary-blue-light: #e0f2fe;
+  --text-dark: #333333;
+  --text-grey: #a0aec0;
+  --weekend-color: #1ea3dd;
+  --bg-white: #ffffff;
+  --border-radius: 4px;
+}
+
+.calendar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #f1f5f9; /* Wall background */
+  font-family: 'Outfit', sans-serif;
+}
+
+.calendar-container {
+  width: 700px;
+  background-color: var(--bg-white);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ring Binder Simulation */
+.calendar-binder {
+  position: absolute;
+  top: -15px;
+  left: 0;
+  right: 0;
+  height: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  z-index: 10;
+  padding: 0 40px;
+}
+
+.binder-ring {
+  width: 8px;
+  height: 30px;
+  background: linear-gradient(to right, #4a4a4a, #8a8a8a, #4a4a4a);
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.binder-ring::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 1px;
+  width: 6px;
+  height: 8px;
+  background-color: #222;
+  border-radius: 50%;
+}
+
+/* === Hero Section === */
+.calendar-hero {
+  position: relative;
+  height: 350px;
+  background-color: var(--primary-blue);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 65% 100%, 35% 75%, 0 50%);
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  color: white;
+  text-align: right;
+  z-index: 5;
+}
+
+.hero-year {
+  font-size: 1.5rem;
+  font-weight: 400;
+  display: block;
+  line-height: 1;
+}
+
+.hero-month {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  line-height: 1.2;
+}
+
+/* === Body Area === */
+.calendar-body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+  padding: 30px 40px 40px;
+  background-color: var(--bg-white);
+  min-height: 350px;
+}
+
+/* === Notes Section === */
+.calendar-notes {
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.notes-textarea {
+  width: 100%;
+  flex-grow: 1;
+  min-height: 200px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  line-height: 25px; /* exactly match background */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 24px,
+    #ccc 24px,
+    #ccc 25px
+  );
+  resize: none;
+  outline: none;
+  padding-top: 5px;
+}
+
+/* === Calendar Grid Container === */
+.calendar-grid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Calendar Month Nav Controls - we place them subtly as the reference doesn't have obvious ones */
+.calendar-navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: -15px; /* Pull into grid area */
+  position: relative;
+  z-index: 2;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-grey);
+}
+.nav-btn:hover { color: var(--primary-blue); }
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 5px;
+  row-gap: 8px;
+  text-align: center;
+}
+
+.weekday-header {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  padding-bottom: 10px;
+}
+.weekday-header:nth-child(6),
+.weekday-header:nth-child(7) {
+  color: var(--weekend-color);
+}
+
+.day-cell {
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  padding: 8px 0;
+  border-radius: 5px;
+  transition: all 0.2s;
+  font-family: inherit;
+  position: relative;
+}
+
+.day-cell:hover:not(.diff-month) {
+  background-color: #f1f5f9;
+}
+
+.day-cell.diff-month {
+  color: #e2e8f0;
+  font-weight: 400;
+  cursor: default;
+}
+
+/* Custom visual selection mirroring a 'physical' highlighting or circling */
+.day-cell.selected {
+  background-color: var(--primary-blue);
+  color: white;
+  font-weight: 700;
+  border-radius: 50%;
+}
+.day-cell.in-range {
+  background-color: var(--primary-blue-light);
+  color: var(--primary-blue);
+  border-radius: 0;
+}
+
+@media (max-width: 600px) {
+  .calendar-body {
+    grid-template-columns: 1fr;
+  }
+}
