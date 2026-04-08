@@ -4,12 +4,8 @@ import {
   startOfWeek,
   endOfWeek,
   eachDayOfInterval,
-  isSameMonth,
   isSameDay,
-  isToday,
   isWithinInterval,
-  isBefore,
-  isAfter,
 } from 'date-fns';
 
 export function getDaysInMonth(currentDate: Date) {
