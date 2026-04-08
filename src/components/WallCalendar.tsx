@@ -59,7 +59,7 @@ export const WallCalendar: React.FC = () => {
               <button className="nav-btn" onClick={handleNextMonth} aria-label="Next Month"><ChevronRight size={16}/></button>
             </div>
 
-            <div className="calendar-grid">
+            <div className="calendar-grid" key={format(currentDate, 'yyyy-MM')} style={{ animation: 'gridFadeIn 0.4s ease-out' }}>
               {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map((day) => (
                 <div key={day} className="weekday-header">
                   {day}
