@@ -38,4 +38,3 @@ To run this project locally:
 2. **Hero Section**: Applied a CSS `clip-path` polygon to give the header image a rugged, "W" cut that resembles the reference image. The month and year are dramatically overlaid using the 'Outfit' Google Font for a crisp, modern feel.
 3. **Notes Section**: Recreated the paper lines by using a `repeating-linear-gradient` on a transparent `textarea`. This prevents text from misaligning with lines regardless of user input.
 
-Enjoy!
