@@ -19,6 +19,35 @@
   font-family: 'Outfit', sans-serif;
 }
 
+.global-back-btn {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background-color: var(--bg-white);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+.global-back-btn:hover {
+  transform: translateX(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  color: var(--primary-blue);
+}
+.global-back-btn:active {
+  transform: translateX(-1px);
+}
+
 .calendar-container {
   width: 700px;
   background-color: var(--bg-white);

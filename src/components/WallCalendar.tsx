@@ -1,6 +1,6 @@
 import React from 'react';
 import { format, isSameMonth, isToday } from 'date-fns';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 import { useCalendar } from '../hooks/useCalendar';
 import { getDaysInMonth, isDateSelected, isDateInRange } from '../utils/calendarUtils';
 import './WallCalendar.css';
@@ -25,6 +25,15 @@ export const WallCalendar: React.FC = () => {
 
   return (
     <div className="calendar-wrapper">
+      <button 
+        className="global-back-btn" 
+        onClick={() => window.history.back()}
+        aria-label="Go Back"
+      >
+        <ArrowLeft size={18} />
+        <span>Back</span>
+      </button>
+
       <div className="calendar-container">
         
         <div className="calendar-binder">
